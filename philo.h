@@ -17,9 +17,12 @@ typedef struct s_threads
 	int					time_2_eat;
 	int					eat_counter;
 	int					number_of_time_2_eat;
+	int					is_dead;
 }						t_threads;
 
 int						ft_parser(int argc, char **argv, t_threads *threads);
 int						ft_atoi(const char *str);
+void					create_threads(t_threads *threads, pthread_t *philos);
+
 
 #endif

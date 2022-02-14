@@ -1,11 +1,15 @@
 #include "philo.h"
 
-void *routine(void *threadStruct)
+void* routine(void *threadStruct)
 {
-	t_threads *threads = (t_threads *)threadStruct;
+	t_threads *threads;
+
+	threads = (t_threads *)threadStruct;
 	while (threads->is_dead == 0)
 	{
-		
+		think(threads);
+		eat(threads);
+		sleep(threads);
 	}
 }
 

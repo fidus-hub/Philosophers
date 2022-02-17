@@ -28,3 +28,18 @@ int	ft_atoi(const char *str)
 	}
 	return (r * sign);
 }
+
+unsigned long long	get_time(void)
+{
+	unsigned long long	mili_sec;
+	struct timeval		current_time;
+
+	gettimeofday(&current_time, NULL);
+	mili_sec = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
+	return (mili_sec);
+}
+
+void	display(char *msg, t_threads *philo)
+{
+	unsigned long long	time;
+}

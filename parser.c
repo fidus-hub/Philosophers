@@ -17,6 +17,7 @@ int	ft_parser(int argc, char **argv, t_threads *threads)
 	threads->time_2_sleep = ft_atoi(argv[4]);
 	threads->eat_counter = 0;
 	threads->is_dead = 0;
+	return(1);
 }
 
 

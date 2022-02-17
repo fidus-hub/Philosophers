@@ -32,10 +32,10 @@ typedef struct s_philos
 
 int						ft_parser(int argc, char **argv, t_threads *threads);
 int						ft_atoi(const char *str);
-void					create_threads(t_threads *threads, pthread_t *philos);
-void					think(t_threads *threads);
-void					eat(t_threads *threads);
-void					sleep(t_threads *threads);
+//void					create_threads(t_threads *threads, t_philos *philos);
+//void					think(t_threads *threads);
+//void					eat(t_threads *threads);
+//void					sleep(t_threads *threads);
 unsigned long long		get_time(void);
 void					display(char *msg, t_threads *philo);
 

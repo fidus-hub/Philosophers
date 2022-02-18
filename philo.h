@@ -18,15 +18,18 @@ typedef struct s_threads
 	int					eat_counter;
 	int					number_of_time_2_eat;
 	int					is_dead;
+	struct s_philos		*philosopher;
 }						t_threads;
 
 typedef struct s_philos
 {
-	int					philo_id;
+	int					id;
 	int					last_time_2_eat;
 	int					number_of_eat;
-	pthread_mutex_t		fork;
-	pthread_t			threads;
+	int					rfork;
+	int					lfork;
+	pthread_mutex_t		eat;
+	struct s_threads	*threads;
 }						t_philos;
 
 

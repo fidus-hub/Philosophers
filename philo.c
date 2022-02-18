@@ -1,5 +1,5 @@
 #include "philo.h"
-int 	g_tabsyy= 100000;
+
 void* routine(void *threadStruct)
 {
 	t_philos *threads;
@@ -58,6 +58,20 @@ t_philos *init_philos(t_threads *threads)
 	return (philosopher);
 }
 
+void init_mutex(t_threads *threads)
+{
+	int i;
+
+	i = 0;
+	pthread_mutex_init(&threads->write, NULL);
+	threads->forks = malloc(sizeof(pthread_mutex_t) * threads->philo_numbr);
+	while (i < threads->philo_numbr)
+	{
+		pthread_mutex_init(&threads->forks[i], NULL);
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_threads	threads;
@@ -68,6 +82,7 @@ int	main(int argc, char **argv)
 		return (0);
 	philos = malloc(sizeof(t_philos) *(threads.philo_numbr));
 	init_philos(&threads);
+	init_mutex(&threads);
 	create_threads(&threads, philos);
 	//while(1);
 }

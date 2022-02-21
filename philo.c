@@ -5,16 +5,11 @@ void* routine(void *threadStruct)
 	t_philos *threads;
 
 	threads = (t_philos *)threadStruct;
-	// while (threads->is_dead == 0)
-	// {
-	// 	think(threads);
-	// 	eat(threads);
-	// 	sleep(threads);
-	// }
-	while( g_tabsyy > 0)
+	while (threads->is_dead == 0)
 	{
-		printf("this philo %d , is alive \n", threads->id);
-		g_tabsyy -= 100;
+		think(threads);
+	 	eat(threads);
+	 	sleep(threads);
 	}
 	return(NULL);
 }

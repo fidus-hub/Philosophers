@@ -42,4 +42,11 @@ unsigned long long	get_time(void)
 void	display(char *msg, t_threads *philo)
 {
 	unsigned long long	time;
+
+	pthread_mutex_lock(&philo->thread->write);
+	time = get_time() - philo->thread->time;
+	printf("%llu philosopher %d ", time, philo->id);
+	printf("%s\n", msg);
+	if (ft_strncmp(msg, "died", 5))
+		pthread_mutex_unlock(&philo->thread->write);
 }

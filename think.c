@@ -1,6 +1,6 @@
 #include "philo.c"
 
-void	think(t_threads *threads)
+void	think(t_philos *philos)
 {
-	write(1, "is thinking\n",12);
+	display("is thinking", philos);
 }

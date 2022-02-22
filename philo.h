@@ -42,7 +42,7 @@ int						ft_atoi(const char *str);
 //void					eat(t_threads *threads);
 //void					sleep(t_threads *threads);
 unsigned long long		get_time(void);
-void					display(char *msg, t_threads *philo);
+void					display(char *msg, t_philos *philo);
 
 
 #endif

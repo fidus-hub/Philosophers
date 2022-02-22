@@ -2,14 +2,14 @@
 
 void* routine(void *threadStruct)
 {
-	t_philos *threads;
+	t_philos *philos;
 
-	threads = (t_philos *)threadStruct;
-	while (threads->is_dead == 0)
+	philos = (t_philos *)threadStruct;
+	while (philos->threads->is_dead == 0)
 	{
-		think(threads);
-	 	eat(threads);
-	 	sleep(threads);
+		think(philos);
+	 	eat(philos);
+	 	sleep(philos);
 	}
 	return(NULL);
 }
@@ -75,8 +75,7 @@ int	main(int argc, char **argv)
 	ft_parser(argc, argv, &threads);
 	if (threads.philo_numbr == 0)
 		return (0);
-	philos = malloc(sizeof(t_philos) *(threads.philo_numbr));
-	init_philos(&threads);
+	philos = init_philos(&threads);
 	init_mutex(&threads);
 	create_threads(&threads, philos);
 	//while(1);

@@ -39,14 +39,14 @@ unsigned long long	get_time(void)
 	return (mili_sec);
 }
 
-void	display(char *msg, t_threads *philo)
+void	display(char *msg, t_philos *philo)
 {
 	unsigned long long	time;
 
-	pthread_mutex_lock(&philo->thread->write);
-	time = get_time() - philo->thread->time;
+	pthread_mutex_lock(&(philo->threads->write));
+	time = get_time() - philo->threads->time;
 	printf("%llu philosopher %d ", time, philo->id);
 	printf("%s\n", msg);
 	if (ft_strncmp(msg, "died", 5))
-		pthread_mutex_unlock(&philo->thread->write);
+		pthread_mutex_unlock(&philo->threads->write);
 }

@@ -38,11 +38,12 @@ typedef struct s_philos
 int						ft_parser(int argc, char **argv, t_threads *threads);
 int						ft_atoi(const char *str);
 //void					create_threads(t_threads *threads, t_philos *philos);
-//void					think(t_threads *threads);
-//void					eat(t_threads *threads);
-//void					sleep(t_threads *threads);
+void					think(t_philos *philos);
+void					eat(t_philos *philos);
+void					sleeping(t_philos *philos);
 unsigned long long		get_time(void);
 void					display(char *msg, t_philos *philo);
+int						ft_strncmp(const char *s1, const char *s2, size_t n);
 
 
 #endif

@@ -9,7 +9,7 @@ void* routine(void *threadStruct)
 	{
 		think(philos);
 	 	eat(philos);
-	 	sleep(philos);
+	 	sleeping(philos);
 	}
 	return(NULL);
 }

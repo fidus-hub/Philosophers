@@ -38,7 +38,7 @@ typedef struct s_philos
 
 int						ft_parser(int argc, char **argv, t_threads *threads);
 int						ft_atoi(const char *str);
-//void					create_threads(t_threads *threads, t_philos *philos);
+void					supervisor(t_threads *threads);
 void					think(t_philos *philos);
 void					eat(t_philos *philos);
 void					sleeping(t_philos *philos);

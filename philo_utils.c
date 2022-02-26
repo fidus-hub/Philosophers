@@ -72,7 +72,7 @@ void	supervisor(t_threads *threads)
 		i = -1;
 		while (++i < threads->philo_numbr)
 		{
-			if((get_time() >=((usigned long long)threads->time_2_die + threads->philosopher[i].last_time_2_eat &&threads->philosopher[i].is_eating == 0)))
+			if((get_time() >=((unsigned long long)threads->time_2_die + threads->philosopher[i].last_time_2_eat &&threads->philosopher[i].is_eating == 0)))
 			{
 				display("died", &threads->philosopher[i]);
 				return;

@@ -30,6 +30,7 @@ typedef struct s_philos
 	int					number_of_eat;
 	int					rfork;
 	int					lfork;
+	int					is_eating;
 	pthread_mutex_t		eat;
 	struct s_threads	*threads;
 }						t_philos;

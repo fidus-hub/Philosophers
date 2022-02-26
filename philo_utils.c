@@ -62,3 +62,24 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+
+void	supervisor(t_threads *threads)
+{
+	int i;
+
+	while(1)
+	{
+		i = -1;
+		while (++i < threads->philo_numbr)
+		{
+			if((get_time() >=((usigned long long)threads->time_2_die + threads->philosopher[i].last_time_2_eat &&threads->philosopher[i].is_eating == 0)))
+			{
+				display("died", &threads->philosopher[i]);
+				return;
+			}
+			else if (threads->eat_counter == threads->philo_numbr)
+				return ;
+		}
+		usleep(100);
+	}
+}

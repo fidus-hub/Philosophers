@@ -1,4 +1,4 @@
-#include "philo.c"
+#include "philo.h"
 
 void	eat(t_philos *philos)
     {

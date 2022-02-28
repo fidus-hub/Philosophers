@@ -1,4 +1,4 @@
-#include "philo.c"
+#include "philo.h"
 
 void	think(t_philos *philos)
 {

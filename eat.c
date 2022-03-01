@@ -13,7 +13,9 @@ void	eat(t_philos *philos)
         philos->number_of_eat++;
         if (philos->number_of_eat == philos->threads->number_of_time_2_eat)
             philos->threads->eat_counter++;
-        usleep(philos->threads->time_2_sleep * 1000);
+        usleep(philos->threads->time_2_eat * 1000 - 14000);
+        while (get_time() - philos->last_time_2_eat < (unsigned long long) philos->number_of_eat)
+            continue;
         pthread_mutex_unlock(&philos->threads->forks[philos->lfork]);
         pthread_mutex_unlock(&philos->threads->forks[philos->rfork]);
         pthread_mutex_unlock(&philos->eat);

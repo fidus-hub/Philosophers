@@ -39,18 +39,6 @@ unsigned long long	get_time(void)
 	return (mili_sec);
 }
 
-void	display(char *msg, t_philos *philo)
-{
-	unsigned long long	time;
-
-	pthread_mutex_lock(&(philo->threads->write));
-	time = get_time() - philo->threads->time;
-	printf("%llu philosopher %d ", time, philo->id);
-	printf("%s\n", msg);
-	if (ft_strncmp(msg, "died", 5))
-		pthread_mutex_unlock(&philo->threads->write);
-}
-
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
@@ -63,6 +51,18 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
+void	display(char *msg, t_philos *philo)
+{
+	unsigned long long	time;
+
+	pthread_mutex_lock(&(philo->threads->write));
+	time = get_time() - philo->threads->time;
+	printf("%llu philosopher %d ", time, philo->id);
+	printf("%s\n", msg);
+	if (ft_strncmp(msg, "died", 5))
+		pthread_mutex_unlock(&philo->threads->write);
+}
+
 void	supervisor(t_threads *threads)
 {
 	int i;
@@ -72,12 +72,15 @@ void	supervisor(t_threads *threads)
 		i = -1;
 		while (++i < threads->philo_numbr)
 		{
-			if((get_time() >=((unsigned long long)threads->time_2_die + threads->philosopher[i].last_time_2_eat &&threads->philosopher[i].is_eating == 0)))
+			// printf("%ul\n");
+			// printf("calcul: %d\n", threads->philosopher[i].last_time_2_eat);
+			if((get_time() >= ((unsigned long long)threads->time_2_die + threads->philosopher[i].last_time_2_eat)) && threads->philosopher[i].is_eating == 0)
 			{
 				display("died", &threads->philosopher[i]);
+				threads->is_dead = 1;
 				return;
 			}
-			else if (threads->eat_counter == threads->philo_numbr)
+			if (threads->eat_counter == threads->philo_numbr)
 				return ;
 		}
 		usleep(100);

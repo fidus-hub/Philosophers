@@ -10,6 +10,7 @@ void* routine(void *threadStruct)
 		think(philos);
 	 	eat(philos);
 	 	sleeping(philos);
+		usleep(100);
 	}
 	return(NULL);
 }
@@ -20,9 +21,8 @@ void create_threads(t_threads *threads, t_philos *philos)
 	int 		i;
 
 
-	i = 		0;
+	i = 0;
 	threads->time = get_time();
-
 	while (i < threads->philo_numbr)
 	{
 		threads->philosopher[i].last_time_2_eat = get_time();
@@ -76,6 +76,7 @@ int	main(int argc, char **argv)
 	if (threads.philo_numbr == 0)
 		return (0);
 	philos = init_philos(&threads);
+	threads.philosopher = philos;
 	init_mutex(&threads);
 	create_threads(&threads, philos);
 	supervisor(&threads);

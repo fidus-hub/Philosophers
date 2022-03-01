@@ -2,6 +2,11 @@
 
 void	sleeping(t_philos *philos)
 {
+    unsigned long long time;
+
 	display("is sleeping", philos);
-    usleep(philos->threads->time_2_sleep * 1000);
+    time = get_time();
+    usleep(philos->threads->time_2_sleep * 1000 - 16000);
+    while (get_time() - time < (unsigned long long) philos->threads->time_2_sleep)
+        continue;
 }

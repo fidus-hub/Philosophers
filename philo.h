@@ -26,7 +26,7 @@ typedef struct s_threads
 typedef struct s_philos
 {
 	int					id;
-	int					last_time_2_eat;
+	unsigned long long	last_time_2_eat;
 	int					number_of_eat;
 	int					rfork;
 	int					lfork;

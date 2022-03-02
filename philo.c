@@ -1,25 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgrissen <mgrissen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/02 16:56:22 by mgrissen          #+#    #+#             */
+/*   Updated: 2022/03/02 17:33:15 by mgrissen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-void* routine(void *threadStruct)
+void	*routine(void *threadStruct)
 {
-	t_philos *philos;
+	t_philos	*philos;
 
 	philos = (t_philos *)threadStruct;
 	while (philos->threads->is_dead == 0)
 	{
 		think(philos);
-	 	eat(philos);
-	 	sleeping(philos);
+		eat(philos);
+		sleeping(philos);
 		usleep(100);
 	}
-	return(NULL);
+	return (NULL);
 }
 
-void create_threads(t_threads *threads, t_philos *philos)
+void	create_threads(t_threads *threads, t_philos *philos)
 {
 	pthread_t	t_id;
-	int 		i;
-
+	int			i;
 
 	i = 0;
 	threads->time = get_time();
@@ -32,10 +43,10 @@ void create_threads(t_threads *threads, t_philos *philos)
 	}
 }
 
-t_philos *init_philos(t_threads *threads)
+t_philos	*init_philos(t_threads *threads)
 {
-	int	i;
-	t_philos *philosopher;
+	int			i;
+	t_philos	*philosopher;
 
 	i = 0;
 	philosopher = malloc(sizeof(t_philos) * threads->philo_numbr);
@@ -53,9 +64,9 @@ t_philos *init_philos(t_threads *threads)
 	return (philosopher);
 }
 
-void init_mutex(t_threads *threads)
+void	init_mutex(t_threads *threads)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	pthread_mutex_init(&threads->write, NULL);

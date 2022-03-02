@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgrissen <mgrissen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/02 16:56:20 by mgrissen          #+#    #+#             */
+/*   Updated: 2022/03/02 17:24:59 by mgrissen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	ft_atoi(const char *str)
@@ -65,20 +77,20 @@ void	display(char *msg, t_philos *philo)
 
 void	supervisor(t_threads *threads)
 {
-	int i;
+	int	i;
 
-	while(1)
+	while (1)
 	{
 		i = -1;
 		while (++i < threads->philo_numbr)
 		{
-			// printf("%ul\n");
-			// printf("calcul: %d\n", threads->philosopher[i].last_time_2_eat);
-			if((get_time() >= ((unsigned long long)threads->time_2_die + threads->philosopher[i].last_time_2_eat)) && threads->philosopher[i].is_eating == 0)
+			if ((get_time() >= ((unsigned long long)threads->time_2_die
+						+ threads->philosopher[i].last_time_2_eat))
+				&& threads->philosopher[i].is_eating == 0)
 			{
 				display("died", &threads->philosopher[i]);
 				threads->is_dead = 1;
-				return;
+				return ;
 			}
 			if (threads->eat_counter == threads->philo_numbr)
 				return ;

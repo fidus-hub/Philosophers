@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgrissen <mgrissen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/02 16:56:15 by mgrissen          #+#    #+#             */
+/*   Updated: 2022/03/02 17:11:51 by mgrissen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	ft_parser(int argc, char **argv, t_threads *threads)
@@ -17,7 +29,5 @@ int	ft_parser(int argc, char **argv, t_threads *threads)
 	threads->time_2_sleep = ft_atoi(argv[4]);
 	threads->eat_counter = 0;
 	threads->is_dead = 0;
-	return(1);
+	return (1);
 }
-
-

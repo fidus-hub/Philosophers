@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgrissen <mgrissen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/02 17:38:44 by mgrissen          #+#    #+#             */
+/*   Updated: 2022/03/02 17:39:01 by mgrissen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -35,7 +47,6 @@ typedef struct s_philos
 	struct s_threads	*threads;
 }						t_philos;
 
-
 int						ft_parser(int argc, char **argv, t_threads *threads);
 int						ft_atoi(const char *str);
 void					supervisor(t_threads *threads);
@@ -45,6 +56,5 @@ void					sleeping(t_philos *philos);
 unsigned long long		get_time(void);
 void					display(char *msg, t_philos *philo);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
-
 
 #endif

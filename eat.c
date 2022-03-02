@@ -2,6 +2,8 @@
 
 void	eat(t_philos *philos)
     {
+        unsigned long long time;
+
         pthread_mutex_lock(&philos->threads->forks[philos->lfork]);
 	    display("taking lfork", philos);
 	    pthread_mutex_lock(&philos->threads->forks[philos->rfork]);
@@ -13,8 +15,9 @@ void	eat(t_philos *philos)
         philos->number_of_eat++;
         if (philos->number_of_eat == philos->threads->number_of_time_2_eat)
             philos->threads->eat_counter++;
-        usleep(philos->threads->time_2_eat * 1000 - 14000);
-        while (get_time() - philos->last_time_2_eat < (unsigned long long) philos->number_of_eat)
+        time = get_time();
+        usleep(philos->threads->time_2_eat * 1000 - 10000);
+        while (get_time() - time < (unsigned long long) philos->threads->time_2_eat)
             continue;
         pthread_mutex_unlock(&philos->threads->forks[philos->lfork]);
         pthread_mutex_unlock(&philos->threads->forks[philos->rfork]);

@@ -80,5 +80,4 @@ int	main(int argc, char **argv)
 	init_mutex(&threads);
 	create_threads(&threads, philos);
 	supervisor(&threads);
-	//while(1);
 }

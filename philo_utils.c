@@ -6,7 +6,7 @@
 /*   By: mgrissen <mgrissen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:56:20 by mgrissen          #+#    #+#             */
-/*   Updated: 2022/03/02 17:24:59 by mgrissen         ###   ########.fr       */
+/*   Updated: 2022/03/05 10:42:27 by mgrissen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	supervisor(t_threads *threads)
 						+ threads->philosopher[i].last_time_2_eat))
 				&& threads->philosopher[i].is_eating == 0)
 			{
+				pthread_mutex_lock(&threads->philosopher[i].eat);
 				display("died", &threads->philosopher[i]);
 				threads->is_dead = 1;
 				return ;

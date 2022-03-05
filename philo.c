@@ -6,7 +6,7 @@
 /*   By: mgrissen <mgrissen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:56:22 by mgrissen          #+#    #+#             */
-/*   Updated: 2022/03/02 17:33:15 by mgrissen         ###   ########.fr       */
+/*   Updated: 2022/03/05 12:56:40 by mgrissen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_philos	*init_philos(t_threads *threads)
 		philosopher[i].number_of_eat = 0;
 		philosopher[i].rfork = (i + 1) % threads->philo_numbr;
 		philosopher[i].lfork = i;
+		philosopher[i].is_eating = 0;
 		pthread_mutex_init(&philosopher[i].eat, NULL);
 		philosopher[i].threads = threads;
 		i++;
